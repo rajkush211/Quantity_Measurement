@@ -25,4 +25,11 @@ public class QuantityMeasurementTest {
         Feet feet2 = new Feet(0.0);
         Assert.assertNotSame(feet1, feet2);
     }
+
+    @Test
+    public void givenDifferentType_WhenCompared_ShouldReturnNotEqual() {
+        Feet feet1 = new Feet(0.0);
+        Inch inch1 = new Inch(0.0);
+        Assert.assertNotEquals(feet1, inch1);
+    }
 }
