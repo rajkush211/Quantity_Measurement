@@ -55,4 +55,10 @@ public class QuantityMeasurementTest {
         Inch inch2 = null;
         Assert.assertNotEquals(inch1, inch2);
     }
+
+    @Test
+    public void givenSameReference_ShouldReturnEqual() {
+        Inch inch1 = new Inch(0.0);
+        Assert.assertEquals(inch1, inch1);
+    }
 }
