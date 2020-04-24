@@ -167,4 +167,12 @@ public class QuantityMeasurementTest {
         double result = add(feet1, feet2);
         Assert.assertEquals(24.0, result, 0.0);
     }
+
+    @Test
+    public void given2InchAnd2AndHalfCm_WhenAdded_ShouldReturn3Inch() {
+        Length inch = new Length(INCH, 2.0);
+        Length cm = new Length(CM, 2.5);
+        double result = add(inch, cm);
+        Assert.assertEquals(3.0, result, 0.0);
+    }
 }
