@@ -191,4 +191,12 @@ public class QuantityMeasurementTest {
         boolean compareCheck = compare(ml, litre);
         Assert.assertTrue(compareCheck);
     }
+
+    @Test
+    public void given1GallonAnd3Dot78Litres_WhenAdded_ShouldReturn7Dot57litres() {
+        Quantity gallon = new Quantity(GALLON, 1.0);
+        Quantity litre = new Quantity(LITRE, 3.78);
+        double result = add(gallon, litre);
+        Assert.assertEquals(7.57, result, 0.1);
+    }
 }
