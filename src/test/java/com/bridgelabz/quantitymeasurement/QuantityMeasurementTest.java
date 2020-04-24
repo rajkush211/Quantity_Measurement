@@ -207,4 +207,12 @@ public class QuantityMeasurementTest {
         double result = add(ml, litre);
         Assert.assertEquals(2.0, result, 0.0);
     }
+
+    @Test
+    public void given1000GramsAnd1Kg_WhenCompared_ShouldReturnEqual() {
+        Quantity gram = new Quantity(GRAM, 1000.0);
+        Quantity kg = new Quantity(KG, 1.0);
+        boolean compareCheck = compare(gram, kg);
+        Assert.assertTrue(compareCheck);
+    }
 }
