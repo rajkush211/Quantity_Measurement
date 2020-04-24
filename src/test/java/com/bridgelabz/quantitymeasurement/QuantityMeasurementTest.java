@@ -89,4 +89,12 @@ public class QuantityMeasurementTest {
         boolean compareCheck = inch.compare(feet);
         Assert.assertFalse(compareCheck);
     }
+
+    @Test
+    public void given1FeetAnd1Inch_WhenCompared_ShouldReturnFalse() {
+        Length feet = new Length(FEET, 1.0);
+        Length inch = new Length(INCH, 1.0);
+        boolean compareCheck = feet.compare(inch);
+        Assert.assertFalse(compareCheck);
+    }
 }
