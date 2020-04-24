@@ -3,8 +3,7 @@ package com.bridgelabz.quantitymeasurement;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static com.bridgelabz.quantitymeasurement.Length.Unit.FEET;
-import static com.bridgelabz.quantitymeasurement.Length.Unit.INCH;
+import static com.bridgelabz.quantitymeasurement.Unit.*;
 
 
 public class QuantityMeasurementTest {
@@ -32,9 +31,9 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenDifferentType_WhenCompared_ShouldReturnNotEqual() {
-        Length feet1 = new Length(FEET, 1.0);
-        Length inch1 = new Length(INCH, 1.0);
-        boolean compareCheck = feet1.compare(inch1);
+        Length feet = new Length(FEET, 1.0);
+        Length inch = new Length(INCH, 1.0);
+        boolean compareCheck = Unit.compare(feet, inch);
         Assert.assertFalse(compareCheck);
     }
 
@@ -42,7 +41,7 @@ public class QuantityMeasurementTest {
     public void given0FeetAnd1Feet_ShouldReturnNotEqual() {
         Length feet1 = new Length(FEET, 0.0);
         Length feet2 = new Length(FEET, 1.0);
-        boolean compareCheck = feet1.compare(feet2);
+        boolean compareCheck = Unit.compare(feet1, feet2);
         Assert.assertFalse(compareCheck);
     }
 
@@ -70,7 +69,7 @@ public class QuantityMeasurementTest {
     public void givenTwoDifferentType_WhenCompared_ShouldReturnFalse() {
         Length inch = new Length(INCH, 1.0);
         Length feet = new Length(FEET, 1.0);
-        boolean compareCheck = inch.compare(feet);
+        boolean compareCheck = Unit.compare(inch, feet);
         Assert.assertFalse(compareCheck);
     }
 
@@ -78,7 +77,7 @@ public class QuantityMeasurementTest {
     public void given1InchAnd0Inch_ShouldReturnNotEqual() {
         Length inch1 = new Length(INCH, 0.0);
         Length inch2 = new Length(INCH, 1.0);
-        boolean compareCheck = inch1.compare(inch2);
+        boolean compareCheck = Unit.compare(inch1, inch2);
         Assert.assertFalse(compareCheck);
     }
 
@@ -86,7 +85,7 @@ public class QuantityMeasurementTest {
     public void given1InchAnd1Feet_WhenCompared_ShouldReturnFalse() {
         Length inch = new Length(INCH, 1.0);
         Length feet = new Length(FEET, 1.0);
-        boolean compareCheck = inch.compare(feet);
+        boolean compareCheck = Unit.compare(inch, feet);
         Assert.assertFalse(compareCheck);
     }
 
@@ -94,7 +93,7 @@ public class QuantityMeasurementTest {
     public void given1FeetAnd1Inch_WhenCompared_ShouldReturnFalse() {
         Length feet = new Length(FEET, 1.0);
         Length inch = new Length(INCH, 1.0);
-        boolean compareCheck = feet.compare(inch);
+        boolean compareCheck = Unit.compare(feet, inch);
         Assert.assertFalse(compareCheck);
     }
 
@@ -102,7 +101,7 @@ public class QuantityMeasurementTest {
     public void given1FeetAnd12Inch_WhenCompared_ShouldReturnTrue() {
         Length feet = new Length(FEET, 1.0);
         Length inch = new Length(INCH, 12.0);
-        boolean compareCheck = feet.compare(inch);
+        boolean compareCheck = Unit.compare(feet, inch);
         Assert.assertTrue(compareCheck);
     }
 
@@ -110,7 +109,15 @@ public class QuantityMeasurementTest {
     public void given12InchAnd1feet_WhenCompared_ShouldReturnTrue() {
         Length feet = new Length(FEET, 1.0);
         Length inch = new Length(INCH, 12.0);
-        boolean compareCheck = inch.compare(feet);
+        boolean compareCheck = Unit.compare(feet, inch);
+        Assert.assertTrue(compareCheck);
+    }
+
+    @Test
+    public void given3FeetAnd1Yard_WhenCompared_ShouldReturnTrue() {
+        Length feet = new Length(FEET, 3.0);
+        Length yard = new Length(YARD, 1.0);
+        boolean compareCheck = Unit.compare(feet, yard);
         Assert.assertTrue(compareCheck);
     }
 }
