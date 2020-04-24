@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import static com.bridgelabz.quantitymeasurement.Unit.*;
 
-
 public class QuantityMeasurementTest {
 
     @Test
@@ -159,5 +158,13 @@ public class QuantityMeasurementTest {
         Length feet = new Length(FEET, 1.0);
         double result = add(inch, feet);
         Assert.assertEquals(14.0, result, 0.0);
+    }
+
+    @Test
+    public void given1FeetAnd1Feet_WhenAdded_ShouldReturn14Inch() {
+        Length feet1 = new Length(FEET, 1.0);
+        Length feet2 = new Length(FEET, 1.0);
+        double result = add(feet1, feet2);
+        Assert.assertEquals(24.0, result, 0.0);
     }
 }
