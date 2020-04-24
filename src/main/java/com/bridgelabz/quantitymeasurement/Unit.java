@@ -8,7 +8,9 @@ public enum Unit {
     GALLON(3.78, "volume"),
 
     GRAM(0.001, "mass"), KG(1.0, "mass"),
-    TONNE(1000.0, "mass");
+    TONNE(1000.0, "mass"),
+
+    FAHRENHEIT(1.0, "temperature"), CELSIUS(2.12,"temperature");
 
     double baseUnitConversion;
     String quantityType;

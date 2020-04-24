@@ -229,6 +229,14 @@ public class QuantityMeasurementTest {
         Quantity tonne = new Quantity(TONNE, 1.0);
         Quantity gram = new Quantity(GRAM, 1000.0);
         double result = add(tonne, gram);
-        Assert.assertEquals(1001, result, 0.0);
+        Assert.assertEquals(1001.0, result, 0.0);
+    }
+
+    @Test
+    public void given212FahrenheitAnd100Celsius_WhenCompared_ShouldReturnEqual() {
+        Quantity fahrenheit = new Quantity(FAHRENHEIT, 212.0);
+        Quantity celsius = new Quantity(CELSIUS, 100.0);
+        boolean compareCheck = compare(fahrenheit, celsius);
+        Assert.assertTrue(compareCheck);
     }
 }
