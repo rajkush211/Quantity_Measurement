@@ -120,4 +120,12 @@ public class QuantityMeasurementTest {
         boolean compareCheck = Unit.compare(feet, yard);
         Assert.assertTrue(compareCheck);
     }
+
+    @Test
+    public void given1YardAnd36Inch_WhenCompared_ShouldReturnTrue() {
+        Length inch = new Length(INCH, 36.0);
+        Length yard = new Length(YARD, 1.0);
+        boolean compareCheck = Unit.compare(inch, yard);
+        Assert.assertTrue(compareCheck);
+    }
 }
