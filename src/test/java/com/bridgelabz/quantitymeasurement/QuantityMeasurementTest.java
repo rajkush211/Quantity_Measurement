@@ -223,4 +223,12 @@ public class QuantityMeasurementTest {
         boolean compareCheck = compare(tonne, kg);
         Assert.assertTrue(compareCheck);
     }
+
+    @Test
+    public void given1TonneAnd1000Gram_WhenAdded_ShouldReturn1001Kg() {
+        Quantity tonne = new Quantity(TONNE, 1.0);
+        Quantity gram = new Quantity(GRAM, 1000.0);
+        double result = add(tonne, gram);
+        Assert.assertEquals(1001, result, 0.0);
+    }
 }
