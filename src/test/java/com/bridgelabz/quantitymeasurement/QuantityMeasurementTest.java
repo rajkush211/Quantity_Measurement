@@ -199,4 +199,12 @@ public class QuantityMeasurementTest {
         double result = add(gallon, litre);
         Assert.assertEquals(7.57, result, 0.1);
     }
+
+    @Test
+    public void given1000MlAnd1Litre_WhenAdded_ShouldReturn2Litres() {
+        Quantity ml = new Quantity(ML, 1000.0);
+        Quantity litre = new Quantity(LITRE, 1.0);
+        double result = add(ml, litre);
+        Assert.assertEquals(2.0, result, 0.0);
+    }
 }
