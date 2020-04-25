@@ -261,4 +261,15 @@ public class QuantityMeasurementTest {
             Assert.assertEquals(QuantityException.ExceptionType.UNIT_MISMATCH, e.type);
         }
     }
+
+    @Test
+    public void givenNegativeLengths_ShouldThrowException() throws QuantityException {
+        try {
+            Quantity inch = new Quantity(INCH, 10.0);
+            Quantity feet = new Quantity(FEET, -12.0);
+            Double result = add(inch, feet);
+        } catch (QuantityException e) {
+            Assert.assertEquals(QuantityException.ExceptionType.NEGATIVE_VALUE, e.type);
+        }
+    }
 }
