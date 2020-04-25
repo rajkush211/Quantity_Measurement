@@ -151,7 +151,7 @@ public class QuantityMeasurementTest {
     public void given2InchAnd2Inch_WhenAdded_ShouldReturn4Inch() throws QuantityException {
         Quantity inch1 = new Quantity(INCH, 2.0);
         Quantity inch2 = new Quantity(INCH, 2.0);
-        Quantity result = iQtyOperation.add(inch1, inch2);
+        Quantity result = iQtyOperation.add(inch1, inch2, INCH);
         Assert.assertEquals(4.0, result.VALUE, 0.0);
     }
 
@@ -159,7 +159,7 @@ public class QuantityMeasurementTest {
     public void given1FeetAnd2Inch_WhenAdded_ShouldReturn14Inch() throws QuantityException {
         Quantity inch = new Quantity(INCH, 2.0);
         Quantity feet = new Quantity(FEET, 1.0);
-        Quantity result = iQtyOperation.add(inch, feet);
+        Quantity result = iQtyOperation.add(inch, feet, INCH);
         Assert.assertEquals(14.0, result.VALUE, 0.0);
     }
 
@@ -167,15 +167,15 @@ public class QuantityMeasurementTest {
     public void given1FeetAnd1Feet_WhenAdded_ShouldReturn14Inch() throws QuantityException {
         Quantity feet1 = new Quantity(FEET, 1.0);
         Quantity feet2 = new Quantity(FEET, 1.0);
-        Quantity result = iQtyOperation.add(feet1, feet2);
-        Assert.assertEquals(24.0, result.VALUE, 0.0);
+        Quantity result = iQtyOperation.add(feet1, feet2, FEET);
+        Assert.assertEquals(2.0, result.VALUE, 0.0);
     }
 
     @Test
     public void given2InchAnd2AndHalfCm_WhenAdded_ShouldReturn3Inch() throws QuantityException {
         Quantity inch = new Quantity(INCH, 2.0);
         Quantity cm = new Quantity(CM, 2.5);
-        Quantity result = iQtyOperation.add(inch, cm);
+        Quantity result = iQtyOperation.add(inch, cm, INCH);
         Assert.assertEquals(3.0, result.VALUE, 0.0);
     }
 
@@ -199,7 +199,7 @@ public class QuantityMeasurementTest {
     public void given1GallonAnd3Dot78Litres_WhenAdded_ShouldReturn7Dot57litres() throws QuantityException {
         Quantity gallon = new Quantity(GALLON, 1.0);
         Quantity litre = new Quantity(LITRE, 3.78);
-        Quantity result = iQtyOperation.add(gallon, litre);
+        Quantity result = iQtyOperation.add(gallon, litre, LITRE);
         Assert.assertEquals(7.57, result.VALUE, 0.1);
     }
 
@@ -207,7 +207,7 @@ public class QuantityMeasurementTest {
     public void given1000MlAnd1Litre_WhenAdded_ShouldReturn2Litres() throws QuantityException {
         Quantity ml = new Quantity(ML, 1000.0);
         Quantity litre = new Quantity(LITRE, 1.0);
-        Quantity result = iQtyOperation.add(ml, litre);
+        Quantity result = iQtyOperation.add(ml, litre, LITRE);
         Assert.assertEquals(2.0, result.VALUE, 0.0);
     }
 
@@ -231,8 +231,8 @@ public class QuantityMeasurementTest {
     public void given1TonneAnd1000Gram_WhenAdded_ShouldReturn1001Kg() throws QuantityException {
         Quantity tonne = new Quantity(TONNE, 1.0);
         Quantity gram = new Quantity(GRAM, 1000.0);
-        Quantity result = iQtyOperation.add(tonne, gram);
-        Assert.assertEquals(1001.0, result.VALUE, 0.0);
+        Quantity result = iQtyOperation.add(tonne, gram, GRAM);
+        Assert.assertEquals(1001000.0, result.VALUE, 0.0);
     }
 
     @Test
