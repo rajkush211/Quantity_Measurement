@@ -20,12 +20,18 @@ public enum Unit {
         this.quantityType = quantityType;
     }
 
-    public static double add(Quantity quantity1, Quantity quantity2) {
+    public static double add(Quantity quantity1, Quantity quantity2) throws QuantityException {
+        if (!quantity1.UNIT.quantityType.equals(quantity2.UNIT.quantityType))
+            throw new QuantityException(QuantityException.ExceptionType.UNIT_MISMATCH, "Quantities must be same to add");
+        if (quantity1.UNIT.quantityType.equals("temperature"))
+            throw new QuantityException(QuantityException.ExceptionType.TEMPERATURE_ADD, "Temperature cannot be added");
         return quantity1.VALUE * quantity1.UNIT.baseUnitConversion +
                 quantity2.VALUE * quantity2.UNIT.baseUnitConversion;
     }
 
-    public static boolean compare(Quantity quantity1, Quantity quantity2) {
+    public static boolean compare(Quantity quantity1, Quantity quantity2) throws QuantityException {
+        if (!quantity1.UNIT.quantityType.equals(quantity2.UNIT.quantityType))
+            throw new QuantityException(QuantityException.ExceptionType.UNIT_MISMATCH, "Quantities must be same to compare");
         return Double.compare(quantity1.VALUE * quantity1.UNIT.baseUnitConversion,
                               quantity2.VALUE * quantity2.UNIT.baseUnitConversion) == 0;
     }
