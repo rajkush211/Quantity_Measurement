@@ -1,5 +1,6 @@
 package com.bridgelabz.quantitymeasurement;
 
+import static com.bridgelabz.quantitymeasurement.QuantityType.TEMPERATURE;
 import static com.bridgelabz.quantitymeasurement.Unit.FAHRENHEIT;
 
 public class Quantity {
@@ -9,7 +10,7 @@ public class Quantity {
 
     public Quantity(Unit unit, double value) throws QuantityException {
         this.UNIT = unit;
-        if(value < 0.0 && !unit.quantityType.equals("temperature"))
+        if(value < 0.0 && !unit.quantityType.equals(TEMPERATURE))
             throw new QuantityException(QuantityException.ExceptionType.NEGATIVE_VALUE, "Value cannot be negative");
         this.VALUE = value;
     }
