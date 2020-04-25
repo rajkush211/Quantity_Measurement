@@ -29,9 +29,17 @@ public enum Unit {
                 quantity2.VALUE * quantity2.UNIT.baseUnitConversion;
     }
 
+    private double farenheitToCelcius(double fahrenheit) {
+         return (fahrenheit - 32) * 5.0 / 9.0;
+    }
+
     public static boolean compare(Quantity quantity1, Quantity quantity2) throws QuantityException {
         if (!quantity1.UNIT.quantityType.equals(quantity2.UNIT.quantityType))
             throw new QuantityException(QuantityException.ExceptionType.UNIT_MISMATCH, "Quantities must be same to compare");
+        if (quantity1.UNIT.quantityType.equals(FAHRENHEIT))
+            return Double.compare(quantity1.UNIT.farenheitToCelcius(quantity1.VALUE), quantity2.VALUE) == 0;
+        if (quantity2.UNIT.quantityType.equals(FAHRENHEIT))
+            return Double.compare(quantity1.VALUE, quantity2.UNIT.farenheitToCelcius(quantity2.VALUE)) == 0;
         return Double.compare(quantity1.VALUE * quantity1.UNIT.baseUnitConversion,
                               quantity2.VALUE * quantity2.UNIT.baseUnitConversion) == 0;
     }
