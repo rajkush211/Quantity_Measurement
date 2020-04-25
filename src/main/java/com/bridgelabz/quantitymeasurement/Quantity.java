@@ -5,8 +5,10 @@ public class Quantity {
     public final Unit UNIT;
     public final double VALUE;
 
-    public Quantity(Unit unit, double value) {
+    public Quantity(Unit unit, double value) throws QuantityException {
         this.UNIT = unit;
+        if(value < 0.0 && !unit.quantityType.equals("temperature"))
+            throw new QuantityException(QuantityException.ExceptionType.NEGATIVE_VALUE, "Value cannot be negative");
         this.VALUE = value;
     }
 
