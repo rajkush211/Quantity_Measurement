@@ -250,4 +250,15 @@ public class QuantityMeasurementTest {
             Assert.assertEquals(QuantityException.ExceptionType.TEMPERATURE_ADD, e.type);
         }
     }
+
+    @Test
+    public void given212FahrenheitAnd100Gram_ShouldThrowException() throws QuantityException {
+        try {
+            Quantity fahrenheit = new Quantity(FAHRENHEIT, 212.0);
+            Quantity gram = new Quantity(GRAM, 100.0);
+            Double result = add(fahrenheit, gram);
+        } catch (QuantityException e) {
+            Assert.assertEquals(QuantityException.ExceptionType.UNIT_MISMATCH, e.type);
+        }
+    }
 }
